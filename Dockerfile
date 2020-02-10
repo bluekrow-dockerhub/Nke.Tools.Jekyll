@@ -1,3 +1,5 @@
-FROM jekyll/jekyll
+FROM ubuntu/eoan
 LABEL mantainer=BlueKrow
-CMD ["echo", "Hello from Jekyll testing machine"]
+COPY ./entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+#CMD ["echo", "Image Ready"]
