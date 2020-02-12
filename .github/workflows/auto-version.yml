@@ -1,0 +1,18 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a multi-line script
+      run: |
+        cat VERSION 
+        v3=$(( ($(date +%Y%m%d)) ))
+        v4=$(( ($(date +%H) * 3600) + ($(date +%M) * 60) + ($(date +%S) * 1) ))
+        echo Build versioning $v3.$v4
+        echo Autoversioning done.
