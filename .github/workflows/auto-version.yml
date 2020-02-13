@@ -16,6 +16,6 @@ jobs:
         v4=$(( ($(date +%H) * 3600) + ($(date +%M) * 60) + ($(date +%S) * 1) ))
         echo Auto versioning calculation: $v1_2.$v3.$v4
         git tag v0.0
-        git push origin tag
+        git push origin v0.0
         echo Tag Produced
         echo Autoversioning done.
