@@ -19,6 +19,6 @@ jobs:
         echo v3: $v3
         ver=$v1.$v2.$v3
         echo ver: $ver
-        git tag -a $ver -m "Gh-Actions auto-tagging: $ver"
+        git tag $ver
         git push origin $ver
         echo Autoversioning done, Tag produced
