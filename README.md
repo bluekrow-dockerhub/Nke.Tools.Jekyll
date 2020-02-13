@@ -1,4 +1,4 @@
-# Nke.Tools.Jekyll
+# Nke.Tools.Jekyll ![CI](https://github.com/bluekrow-dockerhub/Nke.Tools.Jekyll/workflows/CI/badge.svg?branch=master&event=status)
 Customized Jekyll Image to test a Jekyll site locally
 
 ## Docker Image
