@@ -1,8 +1,8 @@
 # Nke.Tools.Jekyll 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bluekrow-dockerhub/nke.tools.jekyll/CI?label=actions%20build&logo=github&logoColor=gainsboro)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/bluekrow/nke-tools-jekyll?label=autobuild&logo=docker&logoColor=gainsboro)
-![GitHub last commit](https://img.shields.io/github/last-commit/bluekrow-dockerhub/nke.tools.jekyll?logo=github&logoColor=gainsboro)
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/bluekrow-dockerhub/nke.tools.jekyll?label=tag%20version&logo=github&logoColor=gainsboro)
+![GTHB Workflow Status](https://img.shields.io/github/workflow/status/bluekrow-dockerhub/nke.tools.jekyll/CI?label=Actions%20Build&logo=github&logoColor=gainsboro)
+![DCKR Cloud Build Status](https://img.shields.io/docker/cloud/build/bluekrow/nke-tools-jekyll?label=Auto%20Build&logo=docker&logoColor=gainsboro)
+![GTHB Last Commit](https://img.shields.io/github/last-commit/bluekrow-dockerhub/nke.tools.jekyll?label=Last%20Commit&logo=github&logoColor=gainsboro)
+![GTHB Latest Tag (by date)](https://img.shields.io/github/v/tag/bluekrow-dockerhub/nke.tools.jekyll?label=Latest%20Tag&logo=github&logoColor=gainsboro)
 
 Customized Jekyll Image to test a Jekyll site locally
 
