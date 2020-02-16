@@ -74,4 +74,30 @@ else
     exit 1
 fi
 
+echo
+#Check Jekyll installation
+JEKYLL_INSTALL="jekyll"
+RESULT_JEKYLL=$(jekyll --version | sed -e 's/\ .*//')
+echo Expected Software: $JEKYLL_INSTALL
+echo Actual Software: $RESULT_JEKYLL
+if [ "$RESULT_JEKYLL" = "$JEKYLL_INSTALL" ]; then 
+    echoInfo "Test - Jekyll Installation: SUCCESS"
+else
+    echoError "Test - Jekyll Installation: FAILED"
+    exit 1
+fi
+
+echo
+#Check Bundler installation
+BUNDLER_INSTALL="Bundler"
+RESULT_BUNDLER=$(bundler --version | sed -e 's/\ .*//')
+echo Expected Software: $BUNDLER_INSTALL
+echo Actual Software: $RESULT_BUNDLER
+if [ "$RESULT_BUNDLER" = "$BUNDLER_INSTALL" ]; then 
+    echoInfo "Test - Bundler Installation: SUCCESS"
+else
+    echoError "Test - Bundler Installation: FAILED"
+    exit 1
+fi
+
 exit 0
