@@ -1,0 +1,1 @@
+./docker.tests.local.sh no-cache
