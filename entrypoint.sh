@@ -6,5 +6,5 @@ if [ "$1" = "check" ]; then
     exit 0
 fi
 
-#echo "Executing override command"
-#exec "$@"
+echo "Executing override command"
+exec "$@"
