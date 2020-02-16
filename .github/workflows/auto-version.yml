@@ -24,7 +24,7 @@ jobs:
         echo v1: $v1
         v2=$(( ($(date +%y%m%d)) ))
         echo v2: $v2
-        v3=$(( ($(date +%H) * 3600) + ($(date +%M) * 60) + ($(date +%S) * 1) ))
+        v3=$(( ($(date +%H | bc) * 3600) + ($(date +%M | bc) * 60) + ($(date +%S | bc) * 1) ))
         echo v3: $v3
         ver=v$v1.$v2.$v3
         echo ver: $ver
