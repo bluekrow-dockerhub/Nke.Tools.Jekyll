@@ -12,6 +12,14 @@ Using a docker container image composed using
 - All of this defined here [nke-tools-jekyll](https://hub.docker.com/repository/docker/bluekrow/nke-tools-jekyll)
 
 ## Automation
-- Using GitHub Action for auto tagging commits to master
- - Next Step would be auto semantic versioning
-- Using DockerHub to compile and test images
+### Auto Versioning
+Using GitHub Actions for auto tagging, only when pushing commits to master  
+**Next Step**: would be auto semantic versioning. Issue #1 has been created for this purpose.
+### Auto Build
+Using DockerHub automatic builds, to build the following **identical** docker tags when a tag is created on GitHub repository master branch:
+- Latest
+- \<major>
+- \<major>.\<minor>
+- \<major>.\<minor>.\<builtAtDay>.\<builtAtSecond>
+### Auto Test 
+Using DockerHub automatic testing with a System Under Test (SUT) service after every build and before every push to the DockerHub registry.
