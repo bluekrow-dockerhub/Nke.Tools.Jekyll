@@ -26,7 +26,7 @@ sudo docker run -d -it --name jkl-cnt jkl-img bash
 echo
 echo RUN LOCAL TESTS
 echo ---------------
-sudo docker cp Tests/DockerHub/run_tests.sh jkl-cnt:/run_tests.sh
+sudo docker cp docker.tests.cloud.sh jkl-cnt:/run_tests.sh
 sudo docker exec -it jkl-cnt sh run_tests.sh
 
 echo

@@ -1,3 +1,0 @@
-sut:
-    build: .
-    command: /Tests/DockerHub/run_tests.sh
