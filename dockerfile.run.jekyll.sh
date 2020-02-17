@@ -4,14 +4,15 @@ set -eu
 echo 'gem: --no-document --no-ri --no-rdoc' > /etc/gemrc
 
 echo "Running Jekyll Install"
-gem install jekyll -- --use-system-libraries
+TRACE_START=$(date +%s)
+gem install jekyll --silent -- --use-system-libraries -​-clear-sources
+TRACE_END=$(date +%s)
+ELAPSED_TIME=$(($TRACE_END - $TRACE_START))
+echo "Jekyll install took: $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"    
 
 echo "Running Bundler Install"
-gem install bundler -- --use-system-libraries
+gem install bundler --silent -- --use-system-libraries -​-clear-sources 
 
 echo "Running cleaning routines"
-rm -rf /gems/cache/*.gem
-rm -rf /root/.gem
-rm -rf /home/jekyll/.gem
-rm -rf $BUNDLE_HOME/cache
+gem sources -c
 rm -rf $GEM_HOME/cache
