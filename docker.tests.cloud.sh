@@ -13,6 +13,7 @@ execute_test()
     EXPECTED_VALUE=$1
     ACTUAL_VALUE=$2
     TEST_TITLE=$3
+    
     echo
     echo TEST: $TEST_TITLE
     echo "Expected value: $EXPECTED_VALUE"
@@ -69,7 +70,7 @@ execute_test $GEM_HOME_INSTALL $RESULT_GEM_HOME $GEM_HOME_TITLE
 JEKYLL_TITLE="JEKYLL_INSTALLATION"
 JEKYLL_INSTALL="jekyll"
 RESULT_JEKYLL=$(jekyll --version | sed -e 's/\ .*//')
-execute_test $JEKYLL_INSTALL $RESULT_JEKYLL $JEKYLL_TITLE
+execute_test ${JEKYLL_INSTALL:-NULL} ${RESULT_JEKYLL:-NULL} ${JEKYLL_TITLE:-NULL}
 
 #Check Bundler installation
 BUNDLER_TITLE="BUNDLER_INSTALLATION"
