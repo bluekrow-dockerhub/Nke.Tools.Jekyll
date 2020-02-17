@@ -3,11 +3,12 @@ LABEL mantainer=BlueKrow
 ENV GEM_HOME="/usr/local/bundle"
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
-COPY ./entrypoint.sh /
-RUN apt-get update -qq > /dev/null \
- && apt-get install ruby-full build-essential zlib1g-dev -qq > /dev/null
+COPY ./dockerfile.run.base.sh ./
+RUN ./dockerfile.run.base.sh
 
-RUN gem install jekyll bundler --silent
+COPY ./dockerfile.run.jekyll.sh ./
+RUN ./dockerfile.run.jekyll.sh
 
+COPY ./entrypoint.sh ./
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["check"]

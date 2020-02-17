@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -eu
 
 if [ "$1" = "check" ]; then
     echo "Container is ready to be used"
