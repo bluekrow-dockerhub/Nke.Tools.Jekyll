@@ -8,96 +8,73 @@ echoError () {
 	echo "\e[91m\e[5m$1\e[0m"
 }
 
+execute_test()
+{
+    EXPECTED_VALUE=$1
+    ACTUAL_VALUE=$2
+    TEST_TITLE=$3
+    echo
+    echo TEST: $TEST_TITLE
+    echo "Expected value: $EXPECTED_VALUE"
+    echo "Actual value: $ACTUAL_VALUE"
+    if [ "$ACTUAL_VALUE" = "$EXPECTED_VALUE" ]; then 
+        echoInfo "Test result: SUCCESS"
+    else
+        echoError "Test result: FAILED"
+        exit 1
+    fi
+}
+
 echo
 echo ------------------
 echo INITIALIZE TESTING
 echo ------------------
 #Check Ubuntu installation
+NIX_TITLE="INSTALLED_OS"
 NIX_OS="ubuntu"
 RESULT_OS=$(cat /etc/os-release | grep '^ID=' | sed -e 's/^ID=//' )
-echo Expected OS: $NIX_OS
-echo Actual OS: $RESULT_OS
-if [ "$RESULT_OS" = "$NIX_OS" ]; then 
-    echoInfo "Test - Installed OS: SUCCESS"
-else
-    echoError "Test - Installed OS: FAILED"
-    exit 1
-fi
+execute_test $NIX_OS $RESULT_OS $NIX_TITLE
 
-echo
 #Check Distro installation
+NIX_DIST_TITLE="INSTALLED_DISTRIBUTION"
 NIX_DIST="eoan"
 RESULT_DIST=$(cat /etc/os-release | grep '^VERSION_CODENAME=' | sed -e 's/^VERSION_CODENAME=//' )
-echo Expected DIST: $NIX_DIST
-echo Actual DIST: $RESULT_DIST
-if [ "$RESULT_DIST" = "$NIX_DIST" ]; then 
-    echoInfo "Test - Installed Distribution: SUCCESS"
-else
-    echoError "Test - Installed Distribution: FAILED"
-    exit 1
-fi
+execute_test $NIX_DIST $RESULT_DIST $NIX_DIST_TITLE
 
-echo
 #Check Ruby installation
+RUBY_TITLE="RUBY_INSTALLATION"
 RUBY_INSTALL="ruby"
 RESULT_RUBY=$(ruby --version | sed -e 's/\ .*//')
-echo Expected Software: $RUBY_INSTALL
-echo Actual Software: $RESULT_RUBY
-if [ "$RESULT_RUBY" = "$RUBY_INSTALL" ]; then 
-    echoInfo "Test - Ruby Installation: SUCCESS"
-else
-    echoError "Test - Ruby Installation: FAILED"
-    exit 1
-fi
+execute_test $RUBY_INSTALL $RESULT_RUBY $RUBY_TITLE
 
 echo
 #Check Gems installation
+echo "TEST: GEMS_INSTALLATION"
 RESULT_GEMS=$(gem --version)
-echo Actual Software: $RESULT_GEMS
+echo Existent Value: $RESULT_GEMS
 if [ -n "$RESULT_GEMS" ]; then 
-    echoInfo "Test - RubyGems  Installation: SUCCESS"
+    echoInfo "Test result: SUCCESS"
 else
-    echoError "Test - RubyGems Installation: FAILED"
+    echoError "Test result: FAILED"
     exit 1
 fi
 
-echo
 #Check Gems Home installation
+GEM_HOME_TITLE="GEM_HOME_CONFIGURATION"
 GEM_HOME_INSTALL="/usr/local/bundle"
 RESULT_GEM_HOME=$GEM_HOME
-echo Expected Software: $GEM_HOME_INSTALL
-echo Actual Software: $RESULT_GEM_HOME
-if [ "$RESULT_GEM_HOME" = "$GEM_HOME_INSTALL" ]; then 
-    echoInfo "Test - RubyGems Home Installation: SUCCESS"
-else
-    echoError "Test - RubyGems Home Installation: FAILED"
-    exit 1
-fi
+execute_test $GEM_HOME_INSTALL $RESULT_GEM_HOME $GEM_HOME_TITLE
 
-echo
 #Check Jekyll installation
+JEKYLL_TITLE="JEKYLL_INSTALLATION"
 JEKYLL_INSTALL="jekyll"
 RESULT_JEKYLL=$(jekyll --version | sed -e 's/\ .*//')
-echo Expected Software: $JEKYLL_INSTALL
-echo Actual Software: $RESULT_JEKYLL
-if [ "$RESULT_JEKYLL" = "$JEKYLL_INSTALL" ]; then 
-    echoInfo "Test - Jekyll Installation: SUCCESS"
-else
-    echoError "Test - Jekyll Installation: FAILED"
-    exit 1
-fi
+execute_test $JEKYLL_INSTALL $RESULT_JEKYLL $JEKYLL_TITLE
 
-echo
 #Check Bundler installation
+BUNDLER_TITLE="BUNDLER_INSTALLATION"
 BUNDLER_INSTALL="Bundler"
 RESULT_BUNDLER=$(bundler --version | sed -e 's/\ .*//')
-echo Expected Software: $BUNDLER_INSTALL
-echo Actual Software: $RESULT_BUNDLER
-if [ "$RESULT_BUNDLER" = "$BUNDLER_INSTALL" ]; then 
-    echoInfo "Test - Bundler Installation: SUCCESS"
-else
-    echoError "Test - Bundler Installation: FAILED"
-    exit 1
-fi
+execute_test $BUNDLER_INSTALL $RESULT_BUNDLER $BUNDLER_TITLE
 
 exit 0

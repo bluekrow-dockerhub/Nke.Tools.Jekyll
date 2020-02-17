@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo
 echo INITIALIZE LOCAL TESTING
 echo ------------------------
@@ -10,7 +12,10 @@ echo REMOVING CONTAINERS AND IMAGES
 echo ------------------------------
 sudo docker stop $JKL_CONTAINER
 sudo docker rm $JKL_CONTAINER
-sudo docker rmi $JKL_IMAGE
+if [ "$1" = "no-cache" ]; then 
+    echo "Enforcing option $1"
+    sudo docker rmi $JKL_IMAGE
+fi 
 
 echo
 echo REBUILD IMAGE FROM DOCKERFILE
