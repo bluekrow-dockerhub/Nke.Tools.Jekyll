@@ -32,9 +32,10 @@ sudo docker run -d -it --name $JKL_CONTAINER $JKL_IMAGE bash
 echo
 echo RUN CLOUD TESTS LOCALLLY
 echo ------------------------
-CLOUD_TESTS="docker.tests.cloud.sh"
-sudo docker cp $CLOUD_TESTS $JKL_CONTAINER:/$CLOUD_TESTS
-sudo docker exec -it $JKL_CONTAINER sh $CLOUD_TESTS
+CLOUD_TESTS_SRC="docker.tests.cloud.sh"
+CLOUD_TESTS_DST="/docker.tests.cloud.sh"
+sudo docker cp $CLOUD_TESTS_SRC $JKL_CONTAINER:/$CLOUD_TESTS_DST
+sudo docker exec -it $JKL_CONTAINER sh $CLOUD_TESTS_DST
 
 echo
 echo FINISHED
