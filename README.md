@@ -23,3 +23,26 @@ Using DockerHub automatic builds, to build the following **identical** docker ta
 - \<major>.\<minor>.\<builtAtDay>.\<builtAtSecond>
 ### Auto Test 
 Using DockerHub automatic testing with a System Under Test (SUT) service after every build and before every push to the DockerHub registry.
+
+## End User Guide
+The following script can be executed in the root of our jekyll site project:
+```
+docker run \
+    --name <container-name> \
+    --rm -it \
+    -v "$PWD":/jkl-site \
+    -p <host-port>:4000 \
+    bluekrow:nke-tools-jekyll:1.2 \
+    <jekyll-instruction>
+```
+Where:
+- `-v` parameter is used to bind directories, in this case:
+  - `$PWD` is an environment var storing the current path in the host
+  - `/jkl-site` is the working directory path on the container, where jekyll will be executed
+- `-p` parameter is used to bind ports, in this case:
+  - `<host-port>` is the host port
+  - `4000` is the default jekyll port in the container
+- `<jekyll-instruction>` can be one of the following:
+  - jkl-new
+  - jkl-build
+  - jkl-serve
