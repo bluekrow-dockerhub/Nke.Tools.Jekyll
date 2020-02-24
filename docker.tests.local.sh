@@ -10,7 +10,6 @@ sudo echo sudo aqcuired
 echo
 echo REMOVING CONTAINERS AND IMAGES
 echo ------------------------------
-sudo docker stop $JKL_CONTAINER
 sudo docker rm $JKL_CONTAINER
 if [ "$1" = "no-cache" ]; then 
     echo "Enforcing option $1"
@@ -36,6 +35,6 @@ CLOUD_TESTS_SRC="docker.tests.cloud.sh"
 CLOUD_TESTS_DST="/docker.tests.cloud.sh"
 sudo docker cp $CLOUD_TESTS_SRC $JKL_CONTAINER:/$CLOUD_TESTS_DST
 sudo docker exec -it $JKL_CONTAINER sh $CLOUD_TESTS_DST
-
+sudo docker stop $JKL_CONTAINER
 echo
 echo FINISHED
